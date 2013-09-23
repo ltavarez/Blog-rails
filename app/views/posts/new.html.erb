@@ -22,6 +22,23 @@
     <%= f.text_area :text %>
   </p>
 
+   <%= f.fields_for :questions do |builder| %>
+      <p>
+        <%= builder.label :content, "Question" %><br />
+        <%= builder.text_area :content %><br />
+        <%= builder.check_box :_destroy %>
+        <%= builder.label :_destroy, "Remove Question" %>
+      </p>
+      <%= f.fields_for :answers do |builder| %>
+        <p>
+          <%= builder.label :content, "Answer" %>
+          <%= builder.text_field :content %>
+          <%= builder.check_box :_destroy %>
+          <%= builder.label :_destroy, "Remove" %>
+        </p>
+      <% end %>
+   <% end %>
+
   <p>
     <%= f.submit %>
   </p>

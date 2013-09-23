@@ -1,11 +1,18 @@
 class PostsController < ApplicationController
 
+    http_basic_authenticate_with name: "leo", password: "123456", except: [:index, :show]
+
 def index
   @posts = Post.all
 end
 
 def new
   @post = Post.new
+
+  3.times do
+    question = @post.questions.build
+    4.times { question.answers.build }
+  end
 end
 
 def create
