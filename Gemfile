@@ -14,6 +14,8 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'mysql2'
 
+gem 'twitter-bootstrap-rails' ,  '~> 2.2.8'
+
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
