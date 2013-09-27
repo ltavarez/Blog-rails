@@ -9,14 +9,11 @@ end
 def new
   @post = Post.new
 
-  3.times do
-    question = @post.questions.build
-    4.times { question.answers.build }
+  5.times { @post.assets.build }
   end
-end
 
 def create
-  @post = Post.new(params[:post].permit(:title, :text))
+  @post = Post.new(params[:post].permit(:title, :text, assets_attributes: :assets))
 
   if @post.save
     redirect_to @post
@@ -51,8 +48,8 @@ def show
 end
 
 private
-  def post_params
-    params.require(:post).permit(:title, :text)
-  end
+def post_params
+  params.require(:post).permit(:title, :text, assets_attributes: :assets)
+end
 
 end
